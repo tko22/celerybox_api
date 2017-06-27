@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 class UserSerializer(serializers.ModelSerializer):
 	"""UserSerializer"""
-	password = serializers.CharField(write_only=True)
+	password = serializers.CharField(write_only=True, style={'input_type': 'password'})
 	class Meta:
 		model = User
 		fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password')
