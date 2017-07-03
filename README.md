@@ -32,5 +32,5 @@ which django-admin.py
 ```
 The last step is to clone this repository(I will need your .ssh public key first though)
 ```bash
-git clone
+git clone https://github.com/shuang98/grocery-api.git
 ```
