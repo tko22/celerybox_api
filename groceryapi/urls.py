@@ -23,5 +23,5 @@ from api import views, urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(urls)),
-	
+
 ]
