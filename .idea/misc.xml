@@ -8,6 +8,9 @@
       </console-settings>
     </option>
   </component>
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="2" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>

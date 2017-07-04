@@ -28,7 +28,7 @@ class ItemType(models.Model):
 class OnSaleItem(models.Model):
     name = models.CharField(max_length=250)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2)
-    num_items = models.PositiveIntegerField()
+    num_items = models.PositiveIntegerField() #1:0-5,2:5-10,3:over 10
 
     #percentage in decimal form
     discount = models.DecimalField(max_digits=2, decimal_places=2)

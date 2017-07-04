@@ -21,7 +21,7 @@ class ItemTypeSerializer(serializers.ModelSerializer):
     """ItemType Serializer"""
     class Meta:
         model = models.ItemType
-        fields = ['id', 'name', 'typical_price']
+        fields = ['id', 'name', 'typical_price','health_index']
 
 class OnSaleItemSerializer(serializers.ModelSerializer):
     """OnSaleItemSerializer"""
