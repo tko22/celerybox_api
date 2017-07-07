@@ -1,0 +1,256 @@
+Asparagus,Vegetables,0
+Broccoli,Vegetables,1
+Carrots,Vegetables,0
+Cauliflower,Vegetables,1
+Celery,Vegetables,1
+Corn,Vegetables,0
+Cucumbers,Vegetables,0
+Lettuce / Greens,Vegetables,0
+Mushrooms,Vegetables,1
+Onions,Vegetables,1
+Peppers,Vegetables,1
+Potatoes,Vegetables,1
+Spinach,Vegetables,0
+Squash,Vegetables,1
+Zucchini,Vegetables,0
+Tomatoes,Vegetables,0
+Apples,Fruit,0
+Avocados,Fruit,0
+Bananas,Fruit,1
+Berries,Fruit,0
+Cherries,Fruit,0
+Grapefruit,Fruit,0
+Grapes,Fruit,0
+Kiwis,Fruit,0
+Lemons / Limes,Fruit,1
+Melon,Fruit,0
+Nectarines,Fruit,1
+Oranges,Fruit,1
+Peaches,Fruit,0
+Pears,Fruit,1
+Plums,Fruit,0
+Bagels,Refrigerated,1
+Chip dip,Refrigerated,1
+Eggs / Fake eggs,Refrigerated,0
+English muffins,Refrigerated,0
+Fruit juice,Refrigerated,1
+Hummus,Refrigerated,1
+Ready-bake breads,Refrigerated,0
+Tofu,Refrigerated,1
+Tortillas,Refrigerated,0
+Breakfasts,Frozen,1
+Burritos,Frozen,1
+Fish sticks,Frozen,0
+Fries / Tater tots,Frozen,0
+Ice cream / Sorbet,Frozen,1
+Juice concentrate,Frozen,0
+Pizza,Frozen,1
+Pizza Rolls,Frozen,0
+Popsicles,Frozen,1
+TV dinners,Frozen,1
+Vegetables,Frozen,0
+BBQ sauce,Condiments/Sauces,0
+Gravy,Condiments/Sauces,1
+Honey,Condiments/Sauces,0
+Hot sauce,Condiments/Sauces,0
+Jam / Jelly / Preserves,Condiments/Sauces,0
+Ketchup / Mustard,Condiments/Sauces,0
+Mayonnaise,Condiments/Sauces,0
+Pasta sauce,Condiments/Sauces,1
+Relish,Condiments/Sauces,0
+Salad dressing,Condiments/Sauces,0
+Salsa,Condiments/Sauces,0
+Soy sauce,Condiments/Sauces,1
+Steak sauce,Condiments/Sauces,0
+Syrup,Condiments/Sauces,1
+Worcestershire sauce,Condiments/Sauces,1
+Bouillon cubes,Various,0
+Cereal,Various,1
+Coffee / Filters,Various,0
+Instant potatoes,Various,1
+Lemon / Lime juice,Various,0
+Mac & cheese,Various,0
+Olive oil,Various,0
+Packaged meals,Various,0
+Pancake / Waffle mix,Various,0
+Pasta,Various,1
+Peanut butter,Various,1
+Pickles,Various,0
+Rice,Various,0
+Tea,Various,0
+Vegetable oil,Various,0
+Vinegar,Various,1
+Applesauce,Canned ,1
+Baked beans,Canned ,0
+Broth,Canned ,1
+Fruit,Canned ,0
+Olives,Canned ,0
+Tinned meats,Canned ,0
+Tuna / Chicken,Canned ,1
+Soup / Chili,Canned ,0
+Tomatoes,Canned ,0
+Veggies,Canned ,0
+Basil,Spices & Herbs,1
+Black pepper,Spices & Herbs,1
+Cilantro,Spices & Herbs,0
+Cinnamon,Spices & Herbs,1
+Garlic,Spices & Herbs,0
+Ginger,Spices & Herbs,0
+Mint,Spices & Herbs,1
+Oregano,Spices & Herbs,0
+Paprika,Spices & Herbs,1
+Parsley,Spices & Herbs,0
+Red pepper,Spices & Herbs,0
+Salt,Spices & Herbs,1
+Vanilla extract,Spices & Herbs,1
+Butter / Margarine,Dairy,1
+Cottage cheese,Dairy,1
+Half & half,Dairy,1
+Milk,Dairy,0
+Sour cream,Dairy,0
+Whipped cream,Dairy,0
+Yogurt,Dairy,0
+Bleu cheese,Cheese,1
+Cheddar,Cheese,0
+Cottage cheese,Cheese,1
+Cream cheese,Cheese,1
+Feta,Cheese,0
+Goat cheese,Cheese,1
+Mozzarella,Cheese,1
+Parmesan,Cheese,1
+Provolone,Cheese,0
+Ricotta,Cheese,1
+Sandwich slices,Cheese,1
+Swiss,Cheese,1
+Bacon / Sausage,Meat,1
+Beef,Meat,1
+Chicken,Meat,0
+Ground beef / Turkey,Meat,1
+Ham / Pork,Meat,1
+Hot dogs,Meat,0
+Lunchmeat,Meat,0
+Turkey,Meat,1
+Catfish,Seafood,0
+Crab,Seafood,1
+Lobster,Seafood,0
+Mussels,Seafood,1
+Oysters,Seafood,0
+Salmon,Seafood,0
+Shrimp,Seafood,1
+Tilapia,Seafood,1
+Tuna,Seafood,0
+Beer,Beverages,0
+Club soda / Tonic,Beverages,1
+Champagne,Beverages,1
+Gin,Beverages,0
+Juice,Beverages,0
+Mixers,Beverages,1
+Red wine / White wine,Beverages,0
+Rum,Beverages,1
+Saké,Beverages,1
+Soda pop,Beverages,1
+Sports drink,Beverages,1
+Whiskey,Beverages,0
+Vodka,Beverages,1
+Bagels / Croissants,Baked Goods,0
+Buns / Rolls,Baked Goods,0
+Cake / Cookies,Baked Goods,0
+Donuts / Pastries,Baked Goods,1
+Fresh bread,Baked Goods,1
+Pie,Baked Goods,0
+Pita bread,Baked Goods,1
+Sliced bread,Baked Goods,0
+Baking powder / Soda,Baking,0
+Bread crumbs,Baking,0
+Cake / Brownie mix,Baking,1
+Cake icing / Decorations,Baking,1
+Chocolate chips / Cocoa,Baking,0
+Flour,Baking,0
+Shortening,Baking,1
+Sugar,Baking,0
+Sugar substitute,Baking,1
+Yeast,Baking,0
+Candy / Gum,Snacks,0
+Cookies,Snacks,1
+Crackers,Snacks,1
+Dried fruit,Snacks,0
+Granola bars / Mix,Snacks,0
+Nuts / Seeds,Snacks,0
+Oatmeal,Snacks,0
+Popcorn,Snacks,1
+Potato / Corn chips,Snacks,1
+Pretzels,Snacks,0
+Burger night,Themed Meals,1
+Chili night,Themed Meals,0
+Pizza night,Themed Meals,0
+Spaghetti night,Themed Meals,1
+Taco night,Themed Meals,1
+Take-out deli food,Themed Meals,0
+Baby food,Baby,0
+Diapers,Baby,1
+Formula,Baby,0
+Lotion,Baby,0
+Baby wash,Baby,0
+Wipes,Baby,1
+Cat food / Treats,Pets,0
+Cat litter,Pets,1
+Dog food / Treats,Pets,0
+Flea treatment,Pets,1
+Pet shampoo,Pets,1
+Antiperspirant / Deodorant,Care,1
+Bath soap / Hand soap,Care,1
+Condoms / Other b.c.,Care,1
+Cosmetics,Care,0
+Cotton swabs / Balls,Care,0
+Facial cleanser,Care,1
+Facial tissue,Care,1
+Feminine products,Care,0
+Floss,Care,1
+Hair gel / Spray,Care,0
+Lip balm,Care,0
+Moisturizing lotion,Care,0
+Mouthwash,Care,1
+Razors / Shaving cream,Care,0
+Shampoo / Conditioner,Care,0
+Sunblock,Care,0
+Toilet paper,Care,1
+Toothpaste,Care,1
+Vitamins / Supplements,Care,1
+Allergy,Medicine,1
+Antibiotic,Medicine,1
+Antidiarrheal,Medicine,0
+Aspirin,Medicine,0
+Antacid,Medicine,0
+Band-aids / Medical,Medicine,1
+Cold / Flu / Sinus,Medicine,0
+Pain reliever,Medicine,0
+Prescription pick-up,Medicine,0
+Aluminum foil,Kitchen,0
+Napkins,Kitchen,0
+Non-stick spray,Kitchen,0
+Paper towels,Kitchen,0
+Plastic wrap,Kitchen,1
+Sandwich / Freezer bags,Kitchen,0
+Wax paper,Kitchen,0
+Air freshener,Cleaning,0
+Bathroom cleaner,Cleaning,1
+Bleach / Detergent,Cleaning,1
+Dish / Dishwasher soap,Cleaning,0
+Garbage bags,Cleaning,0
+Glass cleaner,Cleaning,1
+Mop head / Vacuum bags,Cleaning,1
+Sponges,Cleaning,0
+CDRs / DVDRs,Supply,0
+Notepad / Envelopes,Supply,1
+Glue,Supply,0
+Printer paper,Supply,1
+Pens,Supply,0
+Postage stamps,Supply,0
+Arsenic,Carcinogens,0
+Asbestos,Carcinogens,0
+Cigarettes,Carcinogens,0
+Radionuclides,Carcinogens,1
+Vinyl chloride,Carcinogens,1
+Tape,Supply,0
+Pencils,Supply,1
+Scrubbers,Cleaning,1
