@@ -13,7 +13,7 @@ class SupplierSerializer(serializers.ModelSerializer):
     """Supplier Serializer"""
     class Meta:
         model = models.Supplier
-        fields = ['id', 'name', 'store_code', 'company','price_index']
+        fields = ['id', 'name', 'company','price_index']
         read_only_fields = ['price_index']
 
 

@@ -6,7 +6,6 @@ from django.db import models
 class Supplier(models.Model):
     name = models.CharField(max_length=50)	
     
-    store_code = models.CharField(max_length=3, unique=True)
     company = models.CharField(max_length=20,default="None")
     #rank score, the higher the better, for price only
     price_index = models.FloatField(default=0.0)
