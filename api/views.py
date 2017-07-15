@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from rest_framework import status
 
 
 # class UserList(generics.ListCreateAPIView):
@@ -29,24 +29,32 @@ class SupplierDetail(generics.RetrieveAPIView):
     queryset = Supplier.objects.all()
     serializer_class = serializers.SupplierSerializer
 
+
+#Use Google Maps API
 @api_view(['GET'])
 def stores_list(request,longitude,latitude):
+    data = {'status':'success'}
     if request.method == 'GET':
-        data = {'long':longitude,'lat':latitude}
-        return Response(data)
-    def get_object(self, longitude,latitude):
-        ret = {'status':'success'}
         try:
-            ret['long'] = longitude
-            ret['lat'] = latitude
-            return HttpResponse(latitude)
-        except Supplier.DoesNotExist:
-            raise Http404
+            data = {'longitude': longitude}
+        except Exception:
+            data['status'] = 'failed'
+        return Response(data)
 
 @api_view(['GET'])
 def supplier_sale_items(request,pk):
+    data = {'status':'success'}
     if request.method == 'GET':
-        return Response({'pk':pk, 'stores':{'safeway','costco'}})
+        try:
+            store = Supplier.objects.get(pk=pk)
+            items = store.onsaleitem_set.all()
+            data = {'pk':pk, 'supplier_name':store.name,'price_index':store.price_index,'onsaleitems':items,
+                        'status_code':status.HTTP_200_OK}
+        except Exception:
+            data['status'] = 'failed'
+            data['status_code'] = status.HTTP_404_NOT_FOUND
+            return Response(data)
+        return Response(data)
 
 class ItemTypeList(generics.ListCreateAPIView):
     queryset = ItemType.objects.all()
