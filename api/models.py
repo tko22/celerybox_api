@@ -2,13 +2,16 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from decimal import Decimal
+
 
 class Supplier(models.Model):
-    name = models.CharField(max_length=50)	
-    
-    company = models.CharField(max_length=20,default="None")
-    #rank score, the higher the better, for price only
-    price_index = models.FloatField(default=0.0)
+    name = models.CharField(max_length=50)
+
+    company = models.CharField(max_length=20, default="None")
+    # rank score, the higher the better, for price only
+    price_index = models.DecimalField(
+        max_digits=3, decimal_places=2, default=Decimal('0.00'))
 
     # latitude = models.DecimalField(max_digits=10, decimal_places=7)
     # longitude = models.DecimalField(max_digits=10, decimal_places=7)
@@ -16,20 +19,23 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name + ' (Supplier #' + str(self.id) + ')'
 
+
 class ItemType(models.Model):
     name = models.CharField(max_length=100)
     typical_price = models.DecimalField(max_digits=6, decimal_places=2)
     health_index = models.FloatField(default=0)
     category = models.CharField(max_length=30)
+
     def __str__(self):
         return self.name
+
 
 class OnSaleItem(models.Model):
     name = models.CharField(max_length=250)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2)
-    num_items = models.PositiveIntegerField() #1:0-5,2:5-10,3:over 10
+    num_items = models.PositiveIntegerField()  # 1:0-5,2:5-10,3:over 10
 
-    #percentage in decimal form
+    # percentage in decimal form
     discount = models.DecimalField(max_digits=2, decimal_places=2)
 
     image_url = models.CharField(max_length=350)
@@ -41,5 +47,3 @@ class OnSaleItem(models.Model):
 
     def __str__(self):
         return self.name + '(' + str(self.start_date) + ' - ' + str(self.end_date) + ')'
-
-
