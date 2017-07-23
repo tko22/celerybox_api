@@ -20,7 +20,6 @@ class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Supplier
         fields = ['id', 'name', 'company', 'price_index']
-        read_only_fields = ['price_index']
 
 
 class ItemTypeSerializer(serializers.ModelSerializer):
@@ -36,3 +35,29 @@ class OnSaleItemSerializer(serializers.ModelSerializer):
         model = models.OnSaleItem
         fields = ['id', 'name', 'sale_price', 'num_items', 'discount', 'image_url',
                   'start_date', 'end_date', 'supplier', 'item_type']
+
+
+def on_sale_filter(shopping_list):
+    class OnSaleItemFiltered(serializers.ListSerializer):
+
+        def to_representation(self, data):
+            data = data.filter(item_type__id__in=shopping_list)
+            return super(OnSaleItemFiltered, self).to_representation(data)
+
+    class OnSaleItemFilteredSerializer(serializers.ModelSerializer):
+        """OnSaleItemSerializer"""
+        class Meta:
+            list_serializer_class = OnSaleItemFiltered
+            model = models.OnSaleItem
+            fields = ['id', 'name', 'sale_price', 'num_items', 'discount', 'image_url',
+                      'start_date', 'end_date', 'supplier', 'item_type']
+
+    class SupplierWithSalesSerializer(serializers.ModelSerializer):
+        """Supplier Serializer with sales"""
+        onsaleitem_set = OnSaleItemFilteredSerializer(many=True)
+
+        class Meta:
+            model = models.Supplier
+            fields = ['id', 'name', 'company', 'price_index', 'onsaleitem_set']
+            read_only_fields = ['price_index']
+    return SupplierWithSalesSerializer
