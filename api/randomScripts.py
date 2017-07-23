@@ -1,4 +1,8 @@
 def main():
+    print "this is random scripts"
+
+
+def addAllItems():
     #copy this in python manage.py shell
     #creates itemtypes
     # to delete old entries - ItemType.objects.all().delete()
@@ -10,7 +14,10 @@ def main():
         category = arry[1]
         new_item = ItemType(name=name,category=category,typical_price=0)
         new_item.save()
-
-
-
+def addAllStores():
+string = "acme_markets,jewel_osco,lucky,pavillions,randalls,tom_thumb,safeway,united_supermarkets,market_street,vons,aldi,costco,kmart,kroger,schnucks,food_lion,hannaford,giant_food_stores,stop_and_shop,martins_food,target,trader_joes,walmart,whole_foods"
+stores = string.split(",")
+for name in stores:
+    store = Supplier(name=name)
+    store.save()
 if __name__ == "__main__": main()
