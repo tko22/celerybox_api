@@ -23,7 +23,7 @@ from api.algorithm import retrieve_supplier
 
 class RetriveStores(APIView):
     """
-    An example of white the json data should look like.
+    An example of what the json data should look like.
     stores:
         a list of dictionaries with keys id and distance
         'id': int (id of store in database)
@@ -60,6 +60,7 @@ class RetriveStores(APIView):
     """
 
     def post(self, request, format=None):
+
         try:
             nearby_stores = {}
             for store in request.data['stores']:
