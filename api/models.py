@@ -58,4 +58,4 @@ class FullPriceItem(models.Model):
     image_url = models.CharField(max_length=350)
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     item_type = models.ForeignKey(ItemType, on_delete=models.CASCADE)
-    barcode_num = models.IntegerField()
+    barcode_num = models.IntegerField(blank=True,null=True)
