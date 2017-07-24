@@ -16,5 +16,5 @@ urlpatterns = [
 
     url(r'^onsaleitems/$', views.OnSaleItemList.as_view()),
     url(r'^onsaleitems/(?P<pk>[0-9]+)/$', views.OnSaleItemDetail.as_view()),
-    url(r'^bestsuppliers/$', views.RetriveStores.as_view())
+    url(r'^bestsuppliers/$', views.RetrieveStores.as_view())
 ]

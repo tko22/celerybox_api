@@ -11,8 +11,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from api.algorithm import retrieve_supplier
-
-
+import json
+from django.http import QueryDict
 # class UserList(generics.ListCreateAPIView):
 #     queryset = User.objects.all()
 #     serializer_class = serializers.UserSerializer
@@ -21,7 +21,7 @@ from api.algorithm import retrieve_supplier
 #     queryset = User.objects.all()
 #     serializer_class = serializers.UserSerializer
 
-class RetriveStores(APIView):
+class RetrieveStores(APIView):
     """
     An example of what the json data should look like.
     stores:
@@ -57,17 +57,29 @@ class RetriveStores(APIView):
             "price": 8.4
         }
     }
+
+    NOTE: Posting a json text in the text box below does not work
     """
 
-    def post(self, request, format=None):
-
+    def post(self,request,format=None):
         try:
-            nearby_stores = {}
+            print 'post'
+            data = request.body
+            jsondata = json.loads(data)
+            stores_map = {}
             for store in request.data['stores']:
+                #stores[id] = {name,place_id,lat,lng,distance}
+                break
+            nearby_stores = {}
+            for store in stores_map:
                 nearby_stores[store['id']] = store['distance']
-            shopping_list = request.data['shopping_list']
+            shopping_list = jsondata['list']
             print(shopping_list)
-            preferences = request.data['preferences']
+            preferences = {}
+            distance_pref = request.data['distance_pref']
+            organic_pref = request.data['organic_pref'] #NOT implemented in algorithm yet
+            preferences['price'] = distance_pref / 2 #TEMP
+            preferences['distance'] = distance_pref / 2 #TEMP
             stores = retrieve_supplier(shopping_list, nearby_stores, preferences[
                                        'price'], preferences['distance'])
             store_query = []
@@ -76,6 +88,7 @@ class RetriveStores(APIView):
             serializer = serializers.on_sale_filter(
                 shopping_list)(store_query, many=True)
             return Response(serializer.data)
+            #return Response({'status':'success'})
         except Exception:
             data = {}
             data['status'] = 'failed'
