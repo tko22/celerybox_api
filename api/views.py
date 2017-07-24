@@ -39,16 +39,16 @@ class RetriveStores(APIView):
     {
         "stores": [
             {
-                "id": 26,
+                "id": 2,
                 "distance": 8
             },
             {
-                "id": 27,
+                "id": 6,
                 "distance": 5
             }
         ],
         "shopping_list": [
-            122,
+            182,
             8,
             3
         ],
