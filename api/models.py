@@ -51,7 +51,7 @@ class OnSaleItem(models.Model):
     def __str__(self):
         return self.name + '(' + str(self.start_date) + ' - ' + str(self.end_date) + ')'
 
-class ShelfItem(models.Model):
+class FullPriceItem(models.Model):
     name = models.CharField(max_length=250, unique=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     num_items = models.PositiveIntegerField() # 1:0-5,2:5-10,3:over 10
