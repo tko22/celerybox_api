@@ -31,15 +31,16 @@ class ItemTypeSerializer(serializers.ModelSerializer):
 
 class OnSaleItemSerializer(serializers.ModelSerializer):
     """OnSaleItemSerializer"""
+
     class Meta:
+
         model = models.OnSaleItem
         fields = ['id', 'name', 'sale_price', 'num_items', 'discount', 'image_url',
                   'start_date', 'end_date', 'supplier', 'item_type']
 
 
-def on_sale_filter(shopping_list):
+def on_sale_filter(shopping_list,supplier):
     class OnSaleItemFiltered(serializers.ListSerializer):
-
         def to_representation(self, data):
             data = data.filter(item_type__id__in=shopping_list)
             return super(OnSaleItemFiltered, self).to_representation(data)
@@ -60,4 +61,5 @@ def on_sale_filter(shopping_list):
             model = models.Supplier
             fields = ['id', 'name', 'company', 'price_index', 'onsaleitem_set']
             read_only_fields = ['price_index']
+
     return SupplierWithSalesSerializer

@@ -4,15 +4,18 @@ from . import serializers
 from django.contrib.auth.models import User
 from rest_framework import generics
 from django.http import Http404
-from .models import Supplier, ItemType, OnSaleItem
+from .models import Supplier, ItemType, OnSaleItem, FullPriceItem, SupplierAlias
 from rest_framework.views import APIView
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from api.algorithm import retrieve_supplier
 import json
+from api.algorithm import retrieve_supplier
+import logging
 from django.http import QueryDict
+from collections import OrderedDict
+import traceback
 # class UserList(generics.ListCreateAPIView):
 #     queryset = User.objects.all()
 #     serializer_class = serializers.UserSerializer
@@ -20,7 +23,7 @@ from django.http import QueryDict
 # class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = User.objects.all()
 #     serializer_class = serializers.UserSerializer
-
+logger = logging.getLogger(__name__)
 class RetrieveStores(APIView):
     """
     An example of what the json data should look like.
@@ -62,38 +65,87 @@ class RetrieveStores(APIView):
     """
 
     def post(self,request,format=None):
+        ret = {'status': 'success'}
         try:
             print 'post'
-            data = request.body
-            jsondata = json.loads(data)
+            try:
+                data = request.body
+                jsondata = json.loads(data)
+            except Exception as ex:
+                logger.error("views.RetrieveStores: loading request.body error" + ex.message)
             stores_map = {}
-            for store in request.data['stores']:
-                #stores[id] = {name,place_id,lat,lng,distance}
-                break
+            if len(jsondata['stores']) == 0:
+                ret['status'] = 'failed'
+                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
+                Response(ret)
+            try:
+                for store in jsondata['stores']:
+                    filtered = Supplier.objects.filter(name__contains = store['name'])
+
+                    if filtered.count() == 0:
+                        second_filtered = SupplierAlias.objects.filter(alias__contains = store['name'])
+                        if second_filtered.count() != 0:
+                            if second_filtered[0].supplier.pk in stores_map:
+                                continue
+                            else:
+                                stores_map[second_filtered[0].supplier.pk] = store
+                    elif filtered.count() > 1:
+                        logger.error("Filtered Multiple Stores",filtered,"name:",store['name'])
+                    else:
+                        if filtered[0].pk in stores_map:
+                            continue
+                        else:
+                            stores_map[filtered[0].pk] = store
+            except Exception as ex:
+                logger.error("error mapping stores to stores in database" + ex.message)
+                logger.error("data: " + jsondata)
+                ret['status'] = 'failed'
+                ret['message'] = 'Server Error'
+                ret['status_code'] = status.HTTP_500_INTERNAL_SERVER_ERROR
+                return Response(ret)
+
+            if len(stores_map) == 0:
+                ret['status'] = 'failed'
+                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
+                Response(ret)
             nearby_stores = {}
-            for store in stores_map:
-                nearby_stores[store['id']] = store['distance']
+            for key,info in stores_map.iteritems():
+                nearby_stores[key] = info['distance']
             shopping_list = jsondata['list']
-            print(shopping_list)
             preferences = {}
-            distance_pref = request.data['distance_pref']
-            organic_pref = request.data['organic_pref'] #NOT implemented in algorithm yet
+            distance_pref = jsondata['distance_pref']
+            organic_pref = jsondata['organic_pref'] #NOT implemented in algorithm yet
             preferences['price'] = distance_pref / 2 #TEMP
             preferences['distance'] = distance_pref / 2 #TEMP
             stores = retrieve_supplier(shopping_list, nearby_stores, preferences[
                                        'price'], preferences['distance'])
             store_query = []
+            if len(stores) == 0:
+                ret['status'] = 'failed'
+                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
+                return Response(ret)
             for store_index in range(0, len(stores)):
-                store_query.append(Supplier.objects.get(id=stores[store_index]))
-            serializer = serializers.on_sale_filter(
-                shopping_list)(store_query, many=True)
-            return Response(serializer.data)
-            #return Response({'status':'success'})
-        except Exception:
-            data = {}
-            data['status'] = 'failed'
-            data['status_code'] = status.HTTP_404_NOT_FOUND
-            return Response(data)
+                onsaleitems = Supplier.objects.get(pk=stores[store_index]).onsaleitem_set.all()
+                query_set = onsaleitems.filter(item_type__id__in=shopping_list)
+                serializer = serializers.OnSaleItemSerializer(query_set, many=True)
+                store = stores_map[stores[store_index]]
+
+                store['onsaleitem_set'] = serializer.data
+
+                store_query.append(store)
+
+
+            ret['stores'] = store_query
+            return Response(ret)
+            #return JsonResponse(store_query,safe=False)
+            # return Response({'status':'success'})
+        except Exception as ex:
+            ret['status'] = 'failed'
+            ret['status_code'] = status.HTTP_500_INTERNAL_SERVER_ERROR
+            ret['message'] = 'Something went Wrong! Wait and try again'
+            logger.error("views.RetrieveStores error: " + ex.message , traceback.print_exc())
+            logger.error("views.RetrieveStores jsondata: " + jsondata)
+            return Response(ret)
 
 
 class SupplierList(generics.ListCreateAPIView):
@@ -116,7 +168,6 @@ def stores_list(request, longitude, latitude):
         except Exception:
             data['status'] = 'failed'
         return Response(data)
-
 
 @api_view(['GET'])
 def supplier_sale_items(request, pk):

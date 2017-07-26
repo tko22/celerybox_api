@@ -26,7 +26,7 @@ SECRET_KEY = '6dan!hpnzb_8fmhd221hn#y$^bapxyo@1czi%02qu!pk%q$hv_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'young-ocean-55015.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'young-ocean-55015.herokuapp.com','192.168.0.102']
 
 
 # Application definition
@@ -105,7 +105,51 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '(%(asctime)s [%(levelname)s] %(name)s: %(message)s '
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'output_file':{
+            'level':'ERROR',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/errors.log',
+            'maxBytes': 1024 * 1024 * 10,  # 5 MB
+            'backupCount': 4,
+            'formatter': 'standard',
+        },
+        'mail_admins': {
+            'level':'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        }
+    },
+    'loggers':{
+        'django.request': {
+            'handlers': ['mail_admins', 'console'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        '': {
+            'handlers': ['console','output_file','mail_admins'],
+            'level':'ERROR',
+        }
 
+    }
+}
+ADMINS = [
+    ('tim', 'timothyko16@gmail.com')
+]
+
+MANAGERS = ADMINS
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

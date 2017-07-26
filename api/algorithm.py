@@ -19,6 +19,7 @@ def retrieve_supplier(itemtypes, suppliers,
         on user's preference for price/distance
 
     """
+
     supplier_scores = []
     avg_distance = sum(
         [dist for s, dist in suppliers.items()]) / len(suppliers)

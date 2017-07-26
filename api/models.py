@@ -7,9 +7,8 @@ from decimal import Decimal
 
 class Supplier(models.Model):
     name = models.CharField(max_length=50)
-    
-    other_names = models.CharField(max_length=50, blank=True,null=True) # names given in Google Maps API, without ' or -
-    
+    #name this field keywords
+    logo_url = models.CharField(max_length=100)
     company = models.CharField(max_length=20, default="None")
     # rank score, the higher the better, for price only
     price_index = models.DecimalField(
@@ -20,7 +19,12 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name + ' (Supplier #' + str(self.id) + ')'
+class SupplierAlias(models.Model):
+    alias = models.CharField(max_length=50)
+    supplier = models.ForeignKey(Supplier,on_delete=models.CASCADE) # names given in Google Maps API, without ' or -
 
+    def __str__(self):
+        return self.alias
 
 class ItemType(models.Model):
     name = models.CharField(max_length=100,unique=True)
@@ -39,7 +43,7 @@ class OnSaleItem(models.Model):
     num_items = models.PositiveIntegerField()  # 1:0-5,2:5-10,3:over 10
 
     # percentage in decimal form
-    discount = models.DecimalField(max_digits=2, decimal_places=2)
+    discount = models.DecimalField(max_digits=4, decimal_places=2)
 
     image_url = models.CharField(max_length=350)
     start_date = models.DateField()
