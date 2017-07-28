@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework import status
 import json
 from api.algorithm import retrieve_supplier
+from api.getBestStore import getBestStore
 import logging
 from django.http import QueryDict
 from collections import OrderedDict
@@ -28,117 +29,58 @@ class RetrieveStores(APIView):
     """
     An example of what the json data should look like.
     stores:
-        a list of dictionaries with keys id and distance
+        array of dictionaries ordered by distance
         'id': int (id of store in database)
-        'distance': float (miles)
-    shopping_list:
+        'distance': float (meters)
+        name: string
+        lng: Double (Longitude)
+        lat: Double (Latitude
+        place_id: string
+            given to us by google maps place api
+            client will need it to make api request to get more info on store
+    list:
         a list of id's of the itemtypes in the user's shopping list
         all integers
-    preferences:
-        dictionary with keys distance and price
-        'distance': float
-        'price': float
-        (Both between 0 to 9.99)
-    {
-        "stores": [
-            {
-                "id": 2,
-                "distance": 8
-            },
-            {
-                "id": 6,
-                "distance": 5
-            }
-        ],
-        "shopping_list": [
-            182,
-            8,
-            3
-        ],
-        "preferences": {
-            "distance": 4.5,
-            "price": 8.4
-        }
-    }
+    distance_pref:
+        an integer from 0-9.0
+        9.0: fully prefer cost over distance, 0.0: fully prefer distance over cost
+    organic_pref:
+        an integer from 0-9.0
+        same as distance_pref with organic replacing distance
+
+    example:
+    {"list":[680,673,750,757,671],
+
+    "stores":[
+        {"distance":923.5870705724529,"name":"smart_&_final_extra!","lng":-121.841406,"lat":37.338822,"place_id":"ChIJneC7zjPNj4ARU-K-xPFtufk"},
+        {"distance":1046.836180088878,"name":"story_supermarket","lng":-121.8525102,"lat":37.33285699999999,"place_id":"ChIJ4x_0DyvNj4ARLNysm6JLG2s"},
+        {"distance":1151.277756640423,"name":"lion_supermarket","lng":-121.8540135,"lat":37.33140049999999,"place_id":"ChIJn5qrGmAtjoARA61ef5ELZPE"},
+        {"distance":1209.888715820873,"name":"mi_pueblo_food_center","lng":-121.843099,"lat":37.341285,"place_id":"ChIJRTpWSzDNj4ARLhlyf19fzGM"},
+        {"distance":1432.006075238638,"name":"lucky_7_supermarket","lng":-121.8277975,"lat":37.32314719999999,"place_id":"ChIJQckEy70yjoARZ5le2EbNsNM"},
+        {"distance":1714.276549956156,"name":"walmart_supercenter","lng":-121.860402,"lat":37.3310208,"place_id":"ChIJPfEd8tTMj4ARuPTeEOO-2UU"},
+        {"distance":1855.738711320839,"name":"lion_supermarket","lng":-121.8236898,"lat":37.3211811,"place_id":"ChIJ5TQVbr0yjoARK21Gfi0EXmE"},
+        {"distance":1965.926968072466,"name":"foodmaxx","lng":-121.8205052,"lat":37.32386779999999,"place_id":"ChIJRZn44aIyjoARAtT99_jCzNg"},
+        {"distance":2690.132394573325,"name":"safeway","lng":-121.8107428,"lat":37.3315158,"place_id":"ChIJv1SgbKcyjoARRLjiH5cRQ-c"},
+        {"distance":2845.793281523308,"name":"fresco_supermarket","lng":-121.8100944,"lat":37.3237537,"place_id":"ChIJoXk04J8yjoARvmxNYsPbQl0"},
+        {"distance":3130.600511127204,"name":"chaparral_supermarket","lng":-121.8705815,"lat":37.3460111,"place_id":"ChIJ38fRNOjMj4ARLmO7SOmHFfA"},
+        {"distance":3487.64208603223,"name":"maxim_market","lng":-121.8112126,"lat":37.3100379,"place_id":"ChIJ9aaQlhy1j4ARuMYKiNiXgng"},
+        {"distance":3571.580051494063,"name":"grocery_outlet_bargain_market","lng":-121.8583135,"lat":37.30141899999999,"place_id":"ChIJpSSFIx0zjoARJW1stv2JzVg"}
+    ]
+
+    "distance_pref":6.18864107131958,
+
+    "organic_pref":5.823529243469238}
 
     NOTE: Posting a json text in the text box below does not work
     """
 
     def post(self,request,format=None):
-        ret = {'status': 'success'}
         try:
             print 'post'
-            try:
-                data = request.body
-                jsondata = json.loads(data)
-            except Exception as ex:
-                logger.error("views.RetrieveStores: loading request.body error" + ex.message)
-            stores_map = {}
-            if len(jsondata['stores']) == 0:
-                ret['status'] = 'failed'
-                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
-                Response(ret)
-            try:
-                for store in jsondata['stores']:
-                    filtered = Supplier.objects.filter(name__contains = store['name'])
-
-                    if filtered.count() == 0:
-                        second_filtered = SupplierAlias.objects.filter(alias__contains = store['name'])
-                        if second_filtered.count() != 0:
-                            if second_filtered[0].supplier.pk in stores_map:
-                                continue
-                            else:
-                                stores_map[second_filtered[0].supplier.pk] = store
-                    elif filtered.count() > 1:
-                        logger.error("Filtered Multiple Stores",filtered,"name:",store['name'])
-                    else:
-                        if filtered[0].pk in stores_map:
-                            continue
-                        else:
-                            stores_map[filtered[0].pk] = store
-            except Exception as ex:
-                logger.error("error mapping stores to stores in database" + ex.message)
-                logger.error("data: " + jsondata)
-                ret['status'] = 'failed'
-                ret['message'] = 'Server Error'
-                ret['status_code'] = status.HTTP_500_INTERNAL_SERVER_ERROR
-                return Response(ret)
-
-            if len(stores_map) == 0:
-                ret['status'] = 'failed'
-                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
-                Response(ret)
-            nearby_stores = {}
-            for key,info in stores_map.iteritems():
-                nearby_stores[key] = info['distance']
-            shopping_list = jsondata['list']
-            preferences = {}
-            distance_pref = jsondata['distance_pref']
-            organic_pref = jsondata['organic_pref'] #NOT implemented in algorithm yet
-            preferences['price'] = distance_pref / 2 #TEMP
-            preferences['distance'] = distance_pref / 2 #TEMP
-            stores = retrieve_supplier(shopping_list, nearby_stores, preferences[
-                                       'price'], preferences['distance'])
-            store_query = []
-            if len(stores) == 0:
-                ret['status'] = 'failed'
-                ret['message'] = 'Cannot find any stores. Your location may not be supported. Email us to add your location!'
-                return Response(ret)
-            for store_index in range(0, len(stores)):
-                onsaleitems = Supplier.objects.get(pk=stores[store_index]).onsaleitem_set.all()
-                query_set = onsaleitems.filter(item_type__id__in=shopping_list)
-                serializer = serializers.OnSaleItemSerializer(query_set, many=True)
-                store = stores_map[stores[store_index]]
-
-                store['onsaleitem_set'] = serializer.data
-
-                store_query.append(store)
-
-
-            ret['stores'] = store_query
+            ret = getBestStore(request)
             return Response(ret)
-            #return JsonResponse(store_query,safe=False)
-            # return Response({'status':'success'})
+            # #return JsonResponse(store_query,safe=False)
+
         except Exception as ex:
             ret['status'] = 'failed'
             ret['status_code'] = status.HTTP_500_INTERNAL_SERVER_ERROR

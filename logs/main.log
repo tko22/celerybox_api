@@ -1,0 +1,23 @@
+asdf
+(2017-07-25 04:58:04,419 [ERROR] api.views: test 
+(2017-07-25 04:58:04,480 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:58:30,965 [ERROR] api.views: test 
+(2017-07-25 04:58:30,985 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:58:42,481 [ERROR] api.views: test 
+(2017-07-25 04:58:42,501 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:58:52,750 [ERROR] api.views: test 
+(2017-07-25 04:58:52,770 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:59:12,498 [ERROR] api.views: test 
+(2017-07-25 04:59:12,517 [ERROR] api.views: error mapping stores to stores in database'function' object has no attribute 'name' 
+(2017-07-25 04:59:22,378 [ERROR] api.views: test 
+(2017-07-25 04:59:22,398 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:59:30,309 [ERROR] api.views: test 
+(2017-07-25 04:59:30,328 [ERROR] api.views: error mapping stores to stores in database'Supplier' object has no attribute 'supplier' 
+(2017-07-25 04:59:41,287 [ERROR] api.views: test 
+(2017-07-25 04:59:41,338 [ERROR] api.views: RetrieveStores error 'int' object is not iterable 
+(2017-07-25 05:00:30,081 [ERROR] api.views: test 
+(2017-07-25 05:00:30,125 [ERROR] api.views: RetrieveStores error 'int' object is not iterable 
+(2017-07-25 05:01:07,495 [ERROR] api.views: test 
+(2017-07-25 05:01:07,541 [ERROR] api.views: RetrieveStores error 'int' object is not iterable 
+(2017-07-25 05:01:37,509 [ERROR] api.views: test 
+(2017-07-25 05:01:37,565 [ERROR] api.views: RetrieveStores error u'distance_pref' 

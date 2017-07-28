@@ -39,6 +39,7 @@ class ItemType(models.Model):
 
 class OnSaleItem(models.Model):
     name = models.CharField(max_length=250)
+    brand = models.CharField(max_length=100)
     sale_price = models.DecimalField(max_digits=6, decimal_places=2)
     num_items = models.PositiveIntegerField()  # 1:0-5,2:5-10,3:over 10
 
@@ -56,10 +57,11 @@ class OnSaleItem(models.Model):
         return self.name + '(' + str(self.start_date) + ' - ' + str(self.end_date) + ')'
 
 class FullPriceItem(models.Model):
-    name = models.CharField(max_length=250, unique=True)
+    name = models.CharField(max_length=250)
+    brand = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     num_items = models.PositiveIntegerField() # 1:0-5,2:5-10,3:over 10
     image_url = models.CharField(max_length=350)
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     item_type = models.ForeignKey(ItemType, on_delete=models.CASCADE)
-    barcode_num = models.IntegerField(blank=True,null=True)
+    barcode_num = models.CharField(max_length=14,blank=True,null=True)
