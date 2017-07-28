@@ -77,7 +77,13 @@ class RetrieveStores(APIView):
     def post(self,request,format=None):
         try:
             print 'post'
-            ret = getBestStore(request)
+            try:
+                data = request.body
+
+                jsondata = json.loads(data)
+            except Exception as ex:
+                logger.error("views.RetrieveStores: loading request.body error" + ex.message)
+            ret = getBestStore(request,jsondata)
             return Response(ret)
             # #return JsonResponse(store_query,safe=False)
 

@@ -8,15 +8,10 @@ from . import serializers
 from rest_framework import status
 
 logger = logging.getLogger(__name__)
-def getBestStore(request):
+def getBestStore(request,jsondata):
     print "getBestStore"
     ret = {'status': 'success'}
-    try:
-        data = request.body
 
-        jsondata = json.loads(data)
-    except Exception as ex:
-        logger.error("views.RetrieveStores: loading request.body error" + ex.message)
     stores_map = {}
     if len(jsondata['stores']) == 0:
         ret['status'] = 'failed'
