@@ -156,6 +156,10 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
             money_saved += sale_track
             # adds the max_price to max_price_total
         max_price_total += max_price
+    # prevent zero division error
+    if max_price_total == 0:
+        return supplier.price_index / 50
+
     # returns the ratio of money_saved and max_price_total.
     # However, if the ratio is low enough, this calculation could also
     # return the supplier's price_index / 50. Assuming that the price_index is a number between
