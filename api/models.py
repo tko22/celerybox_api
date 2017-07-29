@@ -44,6 +44,7 @@ class OnSaleItem(models.Model):
     num_items = models.PositiveIntegerField()  # 1:0-5,2:5-10,3:over 10
     size = models.CharField(max_length=20)  # ex: 4ct,8oz
     full_price = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)  # in dollars
+    discount = models.DecimalField(max_digits=4, decimal_places=2)
     discount_type = models.CharField(
         max_length=250)  # ex: Buy One get One free - if == dollar_amount -> look at full_price
 

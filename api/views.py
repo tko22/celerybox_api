@@ -83,16 +83,19 @@ class RetrieveStores(APIView):
                 jsondata = json.loads(data)
             except Exception as ex:
                 logger.error("views.RetrieveStores: loading request.body error" + ex.message)
+                return Response({'status':'failed','message':'Server Error: retrieving data'})
             ret = getBestStore(request,jsondata)
             return Response(ret)
             # #return JsonResponse(store_query,safe=False)
 
         except Exception as ex:
+            ret = {}
             ret['status'] = 'failed'
             ret['status_code'] = status.HTTP_500_INTERNAL_SERVER_ERROR
             ret['message'] = 'Something went Wrong! Wait and try again'
-            logger.error("views.RetrieveStores error: " + ex.message , traceback.print_exc())
+            logger.error("views.RetrieveStores error: " + ex.message)
             logger.error("views.RetrieveStores jsondata: " + jsondata)
+            logger.error(traceback.print_exc())
             return Response(ret)
 
 
@@ -196,4 +199,5 @@ def addItem(request):
         except Exception as ex:
             logger.error("views.RetrieveStores: loading request.body error" + ex.message)
             return
+
 

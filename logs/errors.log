@@ -428,3 +428,134 @@ Traceback (most recent call last):
   File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 329, in getMessage
     msg = msg % self.args
 TypeError: not all arguments converted during string formatting
+(2017-07-29 06:08:58,464 [ERROR] django.request: Internal Server Error: /bestsuppliers/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 95, in post
+    logger.error("views.RetrieveStores error: " + ex.message , traceback.print_exc())
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1193, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1286, in _log
+    self.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1296, in handle
+    self.callHandlers(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1336, in callHandlers
+    hdlr.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 759, in handle
+    self.emit(record)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/log.py", line 102, in emit
+    record.getMessage()
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+(2017-07-29 06:11:31,040 [ERROR] django.request: Internal Server Error: /bestsuppliers/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 95, in post
+    logger.error("views.RetrieveStores error: " + ex.message , traceback.print_exc())
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1193, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1286, in _log
+    self.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1296, in handle
+    self.callHandlers(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1336, in callHandlers
+    hdlr.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 759, in handle
+    self.emit(record)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/log.py", line 102, in emit
+    record.getMessage()
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+(2017-07-29 06:12:11,281 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for *: 'float' and 'Decimal' 
+(2017-07-29 06:12:40,646 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for *: 'float' and 'Decimal' 
+(2017-07-29 06:12:40,665 [ERROR] django.request: Internal Server Error: /bestsuppliers/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 95, in post
+    logger.error("views.RetrieveStores error: " + ex.message , traceback.print_exc())
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1193, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1286, in _log
+    self.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1296, in handle
+    self.callHandlers(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 1336, in callHandlers
+    hdlr.handle(record)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 759, in handle
+    self.emit(record)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/log.py", line 102, in emit
+    record.getMessage()
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py", line 329, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+(2017-07-29 06:13:22,104 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for *: 'float' and 'Decimal' 
+(2017-07-29 06:13:22,124 [ERROR] django.request: Internal Server Error: /bestsuppliers/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 95, in post
+    logger.error("views.RetrieveStores error: " + ex.message + traceback.print_exc())
+TypeError: coercing to Unicode: need string or buffer, NoneType found
+(2017-07-29 06:15:30,362 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for *: 'float' and 'Decimal' 
+(2017-07-29 06:15:30,381 [ERROR] api.getBestStore: None 

@@ -56,8 +56,15 @@ def getBestStore(request,jsondata):
     organic_pref = jsondata['organic_pref']  # NOT implemented in algorithm yet
     preferences['price'] = distance_pref / 2  # TEMP
     preferences['distance'] = distance_pref / 2  # TEMP
-    stores = retrieve_supplier(shopping_list, nearby_stores, preferences[
-        'price'], preferences['distance'])
+    try:
+        stores = retrieve_supplier(shopping_list, nearby_stores, preferences[
+            'price'], preferences['distance'])
+    except Exception as ex:
+        logger.error("Algorithm Error" + ex.message)
+        logger.error(traceback.print_exc())
+        ret['status'] = 'failed'
+        ret['message'] = "Server Error: Couldn't find the best store"
+        return ret
     store_query = []
     if len(stores) == 0:
         ret['status'] = 'failed'
