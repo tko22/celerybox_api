@@ -80,7 +80,7 @@ def retrieve_supplier(itemtypes, suppliers,
         total_score = price_score + distance_score
         supplier_scores.append((supplier_id, total_score))
     supplier_scores = sorted(supplier_scores, key=lambda s: s[1], reverse=True)
-    return supplier_scores
+    return [supplier_id for supplier_id, score in supplier_scores]
 
 
 def distance_calculation(distance, max_distance):
@@ -138,7 +138,7 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
             # In this case, since there are no full price records, the max_price will be
             # derived from the original prices of the sales.
             if no_full_price_records:
-                original_price = sale_item.sale_price / (1 - sale_item.discount)
+                original_price = sale_item.sale_price / sale_item.discount
                 max_price = max(max_price, original_price)
 
             # the second condition insures that the sales_calculation stays
@@ -155,10 +155,10 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
             # adds the best sale to money_saved
             money_saved += sale_track
             # adds the max_price to max_price_total
-        max_price_total += float(max_price)
+        max_price_total += max_price
     # prevent zero division error
     if max_price_total == 0:
-        return float(supplier.price_index / 50)
+        return supplier.price_index / 50
 
     # returns the ratio of money_saved and max_price_total.
     # However, if the ratio is low enough, this calculation could also
@@ -170,4 +170,4 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
     # but with low price_index.
     # should always be a value between 0 and 1. The larger the number, the
     # better the score.
-    return float(max(money_saved / max_price_total, supplier.price_index / 50))
+    return max(float(money_saved / max_price_total), supplier.price_index / 50)
