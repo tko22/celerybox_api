@@ -35,8 +35,16 @@ class OnSaleItemSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = models.OnSaleItem
-        fields = ['id', 'name', 'sale_price', 'num_items', 'discount', 'image_url',
-                  'start_date', 'end_date', 'supplier', 'item_type']
+        fields = ['id', 'name','brand', 'sale_price', 'num_items', 'discount_type','full_price', 'image_url',
+                  'start_date', 'end_date','location','timestamp' 'supplier', 'item_type']
+
+class FullPriceItemSerializer(serializers.ModelSerializer):
+    """FullPriceItemSerializer"""
+
+    class Meta:
+        model = models.FullPriceItem
+        fields = ['id','name','brand','price','size','num_items','image_url','barcode_num','location','timestamp','on_sale',
+                  'supplier','item_type']
 
 
 def on_sale_filter(shopping_list,supplier):

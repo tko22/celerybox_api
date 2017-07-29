@@ -151,3 +151,49 @@ class OnSaleItemList(generics.ListCreateAPIView):
 class OnSaleItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = OnSaleItem.objects.all()
     serializer_class = serializers.OnSaleItemSerializer
+
+class FullPriceItemList(generics.ListCreateAPIView):
+    queryset = FullPriceItem.objects.all()
+    serializer_class = serializers.FullPriceItemSerializer
+
+@api_view(['GET'])
+def FullPriceItemDetailByBarcode(request, barcode):
+    data = {'status': 'success'}
+    if request.method == 'GET':
+        try:
+            item = FullPriceItem.objects.get(barcode=barcode)
+            serializer = serializers.FullPriceItemSerializer(item)
+            return Response(serializer.data)
+        except Exception:
+            data['status'] = 'failed'
+            data['status_code'] = status.HTTP_404
+            data['message'] = "Couldn't get store with barcode:",barcode
+
+
+
+# Add item to either OnSaleItem or FullPriceItem
+# jsondata includes {
+#   name(String),brand(String),price(String - will need to convert ex:4.00), size(String ex:4oz,6ct),
+#   barcode(String),Location(String as lat,lng ex: 57.3874,128.17839 just copy and paste model),
+#   supplier(it will be in format lowercase and underscore), on_sale(boolean) - if on sale -> try to find
+#   if there is an item that inside the FullPriceItem with the same barcode and mark it on sale and add the item
+#   to the OnSaleItem Table.
+#  if its on sale, there will be another field name discount_type(String) -> if its dollar_amount there will be another
+#  field name discount and that will the dollar amount discount else -> just copy the discount_type to discount_type
+
+
+
+@api_view(['POST'])
+def addItem(request):
+    ret = {'status':'success'}
+    if request.method =='POST':
+        try:
+            data = request.body
+            jsondata = json.loads(data)
+
+
+
+        except Exception as ex:
+            logger.error("views.RetrieveStores: loading request.body error" + ex.message)
+            return
+
