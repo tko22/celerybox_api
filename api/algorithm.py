@@ -158,7 +158,7 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
         max_price_total += max_price
     # prevent zero division error
     if max_price_total == 0:
-        return supplier.price_index / 50
+        return float(supplier.price_index / 50)
 
     # returns the ratio of money_saved and max_price_total.
     # However, if the ratio is low enough, this calculation could also
@@ -170,4 +170,4 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
     # but with low price_index.
     # should always be a value between 0 and 1. The larger the number, the
     # better the score.
-    return max(float(money_saved / max_price_total), supplier.price_index / 50)
+    return max(float(money_saved / max_price_total), float(supplier.price_index / 50))
