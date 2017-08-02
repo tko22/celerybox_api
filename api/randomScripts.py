@@ -1,9 +1,15 @@
-#from models import ItemType,Supplier
+from models import ItemType,Supplier,OnSaleItem
 
 
 def main():
     print "this is random scripts"
     findDuplicates()
+
+def webscrapMyGroceryDeals():
+
+
+
+
 
 def addAllItems():
     #copy this in python manage.py shell
