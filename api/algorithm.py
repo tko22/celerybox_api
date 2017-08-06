@@ -153,9 +153,9 @@ def sales_calculation(itemtypes, supplier, suppliers_ids):
                 sale_track = max(float(saved_from_sale), sale_track)
 
             # adds the best sale to money_saved
-            money_saved += sale_track
+            money_saved += float(sale_track)
             # adds the max_price to max_price_total
-        max_price_total += max_price
+        max_price_total += float(max_price)
     # prevent zero division error
     if max_price_total == 0:
         return float(supplier.price_index / 50)
