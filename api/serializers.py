@@ -36,7 +36,7 @@ class OnSaleItemSerializer(serializers.ModelSerializer):
 
         model = models.OnSaleItem
         fields = ['id', 'name','brand', 'sale_price', 'num_items', 'discount_type','full_price', 'image_url',
-                  'start_date', 'end_date','location','timestamp' 'supplier', 'item_type']
+                  'start_date', 'end_date','location','timestamp', 'supplier', 'item_type']
 
 class FullPriceItemSerializer(serializers.ModelSerializer):
     """FullPriceItemSerializer"""

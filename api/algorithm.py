@@ -68,7 +68,6 @@ def retrieve_supplier(itemtypes, suppliers,
     # for suppliers and their distances...
     for supplier_id, distance in suppliers.items():
         supplier = Supplier.objects.get(id=supplier_id)
-
         # price_score
         price_score = (0.1 * float(price_preference) *
                        (sales_calculation(itemtypes, supplier, suppliers.keys())))

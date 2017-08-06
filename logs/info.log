@@ -1,1 +1,63 @@
 info.log
+(2017-08-02 06:44:03,122 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for +=: 'float' and 'Decimal' 
+(2017-08-02 06:44:03,142 [ERROR] api.getBestStore: None 
+(2017-08-02 06:44:27,352 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for +=: 'float' and 'Decimal' 
+(2017-08-02 06:44:27,363 [ERROR] api.getBestStore: None 
+(2017-08-02 06:45:45,065 [ERROR] api.getBestStore: Algorithm Errorunsupported operand type(s) for +=: 'float' and 'Decimal' 
+(2017-08-02 06:45:45,088 [ERROR] api.getBestStore: None 
+(2017-08-06 04:05:58,960 [ERROR] django.security.DisallowedHost: Invalid HTTP_HOST header: '192.168.0.111:8000'. You may need to add u'192.168.0.111' to ALLOWED_HOSTS. 
+(2017-08-06 04:06:00,173 [ERROR] django.security.DisallowedHost: Invalid HTTP_HOST header: '192.168.0.111:8000'. You may need to add u'192.168.0.111' to ALLOWED_HOSTS. 
+(2017-08-06 04:09:06,731 [ERROR] api.views: views.RetrieveStores error: Field name `timestampsupplier` is not valid for model `OnSaleItem`. 
+(2017-08-06 04:09:06,763 [ERROR] django.request: Internal Server Error: /bestsuppliers/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 98, in post
+    logger.error("views.RetrieveStores jsondata: " + jsondata)
+TypeError: coercing to Unicode: need string or buffer, dict found
+(2017-08-06 04:11:55,897 [ERROR] api.views: views.RetrieveStores error: Field name `timestampsupplier` is not valid for model `OnSaleItem`. 
+(2017-08-06 04:11:55,933 [ERROR] api.views: None 
+(2017-08-06 04:13:11,669 [ERROR] api.views: views.RetrieveStores error: Field name `timestampsupplier` is not valid for model `OnSaleItem`. 
+(2017-08-06 04:13:11,708 [ERROR] api.views: None 
+(2017-08-06 04:16:37,980 [ERROR] api.views: views.RetrieveStores error: Field name `timestampsupplier` is not valid for model `OnSaleItem`. 
+Traceback (most recent call last):
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/views.py", line 88, in post
+    ret = getBestStore(request,jsondata)
+  File "/Users/tko/Documents/grocery-api/grocery-api/api/getBestStore.py", line 83, in getBestStore
+    store['onsaleitem_set'] = serializer.data
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 739, in data
+    ret = super(ListSerializer, self).data
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 263, in data
+    self._data = self.to_representation(self.instance)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 657, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 484, in to_representation
+    fields = self._readable_fields
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 378, in _readable_fields
+    field for field in self.fields.values()
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 364, in fields
+    for key, value in self.get_fields().items():
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 1017, in get_fields
+    source, info, model, depth
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 1151, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/rest_framework/serializers.py", line 1258, in build_unknown_field
+    (field_name, model_class.__name__)
+ImproperlyConfigured: Field name `timestampsupplier` is not valid for model `OnSaleItem`.
+(2017-08-06 04:16:38,061 [ERROR] api.views: None 
