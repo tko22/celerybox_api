@@ -194,7 +194,7 @@ def addItem(request):
         try:
             data = request.body
             jsondata = json.loads(data)
-
+            name = jsondata['name']
 
 
         except Exception as ex:

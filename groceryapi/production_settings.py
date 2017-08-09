@@ -26,8 +26,7 @@ SECRET_KEY = '6dan!hpnzb_8fmhd221hn#y$^bapxyo@1czi%02qu!pk%q$hv_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'young-ocean-55015.herokuapp.com','192.168.0.102']
-
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'young-ocean-55015.herokuapp.com','192.168.10.255']
 
 # Application definition
 
@@ -74,12 +73,15 @@ WSGI_APPLICATION = 'groceryapi.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+# DIFFERENT FROM DEVELOPMENT
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'celerybox_db',
+        'USER': 'maint',
+        'PASSWORD': 'cbtms683',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -180,7 +182,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.

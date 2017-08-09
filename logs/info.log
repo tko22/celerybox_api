@@ -61,3 +61,113 @@ Traceback (most recent call last):
     (field_name, model_class.__name__)
 ImproperlyConfigured: Field name `timestampsupplier` is not valid for model `OnSaleItem`.
 (2017-08-06 04:16:38,061 [ERROR] api.views: None 
+(2017-08-09 04:43:46,896 [ERROR] django.request: Internal Server Error: /admin/api/barcodeitem/add/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 551, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 224, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1508, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1408, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1448, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 979, in save_model
+    obj.save()
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+IntegrityError: NOT NULL constraint failed: api_barcodeitem.updated
+(2017-08-09 05:35:58,321 [ERROR] django.request: Internal Server Error: /admin/api/barcodeitem/add/ 
+Traceback (most recent call last):
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 551, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 224, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1508, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1408, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1448, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 979, in save_model
+    obj.save()
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 807, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 837, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 923, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/base.py", line 962, in _do_insert
+    using=using, raw=raw)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/tko/.virtualenvs/groceryenv/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+IntegrityError: NOT NULL constraint failed: api_barcodeitem.updated
