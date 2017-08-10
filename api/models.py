@@ -42,7 +42,7 @@ class BarcodeItem(models.Model):
     name = models.CharField(max_length=150,blank=True)
     brand = models.CharField(max_length=50,blank=True)
     size = models.CharField(max_length=20,blank=True) # ex: 4ct,8oz
-    num_items = models.PositiveIntegerField() # 1:0-5,2:5-10,3:over 10
+    num_items = models.PositiveIntegerField(blank=True) # 1:0-5,2:5-10,3:over 10
     image_url = models.CharField(max_length=350,blank=True)
     barcode = models.CharField(max_length=15,blank=True,unique=True)
     updated = models.DateField(blank=True)
@@ -63,7 +63,6 @@ class OnSaleItem(models.Model):
         max_length=250,blank=True)  # ex: Buy One get One free - if == dollar_amount -> look at full_price
 
     end_date = models.DateField()
-
     timestamp = models.DateField() # when it was updated
     location = models.CharField(max_length=100, blank=True)  # lat,lng ex: 37.275937,128.58593
     
@@ -79,7 +78,6 @@ class FullPriceItem(models.Model):
     full_price = models.DecimalField(max_digits=6, decimal_places=2)
 
     location = models.CharField(max_length=100,blank=True)  # location it was added at - lat,lng ex: 37.275937,128.58593
-    
     timestamp = models.DateField()
     on_sale = models.BooleanField(default=False)  # an onsaleitem will be added 
 
@@ -87,4 +85,4 @@ class FullPriceItem(models.Model):
     barcode_item = models.ForeignKey(BarcodeItem, on_delete=models.SET_NULL,null=True)
 
     def __str__(self):
-        return self.name + '(' + self.supplier + ') as ' + self.barcode_item
+        return self.name 
