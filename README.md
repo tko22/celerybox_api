@@ -1,5 +1,6 @@
 # Grocery-Api
 RESTful api for grocery app using [Django Rest Framework](http://www.django-rest-framework.org/).<br>
+https://github.com/tko22/celery_box_ios is the repo for the IOS app
 Note: we will move this repository to a separate user when we figure out a name
 ## Setup
 We will create a virtual environment to evade conflicting dependencies:
